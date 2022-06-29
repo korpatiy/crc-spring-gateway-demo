@@ -26,6 +26,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.cloud:spring-cloud-starter-config:3.1.3")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap:3.1.3")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:2.7.1")
 }
 
 dependencyManagement {

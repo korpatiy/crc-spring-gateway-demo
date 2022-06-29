@@ -1,0 +1,30 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: crc-gateway
+  cloud:
+    config:
+      uri: http://localhost:8888
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: calc-service-id
+          uri: lb://calc-service
+          predicates:
+            Path=/calc/**
+        - id: kpi-service-id
+          uri: lb://kpi-service
+          predicates:
+            Path=/kpi/**
+      default-filters:
+        - name: AuthorizationFilter
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
